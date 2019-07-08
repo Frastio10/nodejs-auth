@@ -3,11 +3,12 @@ const User = require('../model/User');
 const {registerValidation, loginValidation} = require('../validation'); 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
 
 
 router.post('/register', async (req,res)=>{
-
 	//validate data
+
 	const {error} = registerValidation(req.body);
 	if(error) return res.status(400).send(error.details[0].message);
 
@@ -29,6 +30,7 @@ router.post('/register', async (req,res)=>{
 	try {
 		const savedUser = await user.save();
 		res.send({user: user._id});
+
 	} catch(err){
 		res.status(400).send(err);
 	}
@@ -49,9 +51,10 @@ router.post('/login', async (req,res)=>{
 
 	//create and assign token
 	const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
-	res.header('auth-token', token).send(token);
+	res.header('auth-token', token);
 
-	res.send('Logged in!')
+    res.sendFile('/public/home.html', { 'root':'../node-auth' });
+
 })	
 
 

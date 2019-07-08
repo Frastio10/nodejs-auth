@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Home</title>
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="dns-prefetch" href="//stackpath.bootstrapcdn.com" />
+	<link href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-	
+<body class="d-flex justify-content-center align-items-center">
+	<div class="border col-md-5 p-3 d-flex flex-column rounded shadow">
+		<h4 class="text-center">What do you wanna do?</h4>
+		<div class="w-100 d-flex justify-content-center my-3">
+			<a class="btn btn-primary col-md-5 mr-2" href="/api/user/login" role="button">Login</a>
+			<a class="btn btn-primary col-md-5" href="/api/user/register" role="button">Register</a>
+		</div>
+	</div>
 </body>
 </html>
